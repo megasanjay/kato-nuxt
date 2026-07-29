@@ -1,3 +1,5 @@
+import imageThemes from "assets/data/imageThemes.json";
+
 type UnsplashPhoto = {
   id: string;
   description: string | null;
@@ -15,22 +17,6 @@ type UnsplashPhoto = {
   };
   blur_hash: string | null;
 };
-
-const imageThemes = [
-  "nature",
-  "mountain",
-  "forest",
-  "beach",
-  "island",
-  "waterfall",
-  "galaxy",
-  "astronomy",
-  "astrophotography",
-  "landscape",
-  "lake",
-  "scenery",
-  "sculpture",
-];
 
 const fetchUnsplashPhotoDetails = async (
   photoId: string,
@@ -69,7 +55,9 @@ const selectTheme = async (ignoreId: string): Promise<string> => {
   });
 
   const usedThemeSet = new Set(allImages.map((img) => img.theme));
-  const neverUsed = imageThemes.filter((theme) => !usedThemeSet.has(theme));
+  const neverUsed = imageThemes.filter(
+    (theme: string) => !usedThemeSet.has(theme),
+  );
 
   if (neverUsed.length > 0) {
     return neverUsed[Math.floor(Math.random() * neverUsed.length)] ?? "";
@@ -83,8 +71,13 @@ const selectTheme = async (ignoreId: string): Promise<string> => {
   }
 
   const sortedThemes = imageThemes
-    .map((theme) => ({ theme, date: lastUsed.get(theme) ?? "0000-00-00" }))
-    .sort((a, b) => a.date.localeCompare(b.date));
+    .map((theme: string) => ({
+      theme,
+      date: lastUsed.get(theme) ?? "0000-00-00",
+    }))
+    .sort((a: { date: string }, b: { date: string }) =>
+      a.date.localeCompare(b.date),
+    );
 
   return sortedThemes[0]?.theme ?? "";
 };

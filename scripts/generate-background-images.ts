@@ -3,28 +3,14 @@ import dayjs from "dayjs";
 import { PrismaClient } from "../shared/generated/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
+import imageThemes from "../app/assets/data/imageThemes.json";
+
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 const now = dayjs();
-
-const imageThemes = [
-  "nature",
-  "mountain",
-  "forest",
-  "beach",
-  "island",
-  "waterfall",
-  "galaxy",
-  "astronomy",
-  "astrophotography",
-  "landscape",
-  "lake",
-  "scenery",
-  "sculpture",
-];
 
 // Returns a theme not used in previous days. If all themes have been used,
 // returns the one used least recently so themes cycle fairly over time.
