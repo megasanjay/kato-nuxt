@@ -45,7 +45,7 @@
     "@faker-js/faker": "10.4.0",
     "@nuxt/devtools": "4.0.0-alpha.4",
     "@nuxt/eslint": "1.15.2",
-    "@nuxt/ui": "4.7.1",
+    "@nuxt/ui": "4.8.1",
     "@prisma/adapter-pg": "7.8.0",
     "@prisma/client": "7.8.0",
     "@stylistic/eslint-plugin": "5.10.0",
