@@ -1,4 +1,4 @@
-import imageThemes from "assets/data/imageThemes.json";
+import imageThemes from "../../../../../app/assets/data/imageThemes.json";
 
 type UnsplashPhoto = {
   id: string;
